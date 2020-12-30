@@ -28,22 +28,3 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-
-- task: DotNetCoreCLI@2
-  displayName: 'Create artifacts'
-  inputs:
-    command: 'publish'
-    publishWebProjects: true
-    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-
-    
-
-- task: PublishPipelineArtifact@1
-  displayName: 'Publish artifacts'
-  inputs:
-    targetPath: '$(Build.ArtifactStagingDirectory)'
-    publishLocation: 'pipeline'
