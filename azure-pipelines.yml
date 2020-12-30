@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'vs2017-win2016'
+  vmImage: 'ubuntu-18.04'
 
 variables:
   buildConfiguration: 'Release'
@@ -16,8 +16,8 @@ steps:
 - task: UseDotNet@2
   inputs:
     packageType: 'sdk'
-    version: '3.x'
-- script: dotnet build Learning/LearningAPI/LearningAPI.csproj --configuration $(buildConfiguration)
+    version: '3.1.x'
+- script: dotnet build Learning/LearningAPI/Learning.csproj --configuration $(buildConfiguration)
   displayName: 'Build Application'
 
 - task: VSTest@2
